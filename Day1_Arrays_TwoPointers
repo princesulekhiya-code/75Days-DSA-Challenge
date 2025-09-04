@@ -1,0 +1,15 @@
+# Day 1: Arrays & Two Pointers
+
+## Problems Solved
+1. Two Sum (LeetCode #1)  
+   - Approach: HashMap to find pair in O(n).
+2. 3 Sum (LeetCode #15)  
+   - Approach: Sort + Two Pointers, handle duplicates carefully.
+3. 3 Sum Closest (LeetCode #16)  
+   - Approach: Sort + Two Pointers, track closest sum.
+
+## Key Learnings
+- HashMap can reduce pair search to O(n).
+- Sorting + Two Pointers is very powerful for 2/3 sum type problems.
+- Handling duplicates and minimizing absolute difference is crucial.
+
