@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// ---------------------------------------------
+// Problem 1: Remove Duplicates from Sorted Array (LeetCode 26)
+// ---------------------------------------------
+int removeDuplicates(vector<int>& nums) {
+    if(nums.empty()) return 0;
+    int i = 0;
+    for(int j = 1; j < nums.size(); j++) {
+        if(nums[j] != nums[i]) {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+    return i + 1;
+}
+
+// ---------------------------------------------
+// Problem 2: Remove Duplicates (Variation / Edge case handling)
+// ---------------------------------------------
+int removeDuplicatesVariation(vector<int>& nums) {
+    if(nums.size() <= 1) return nums.size();
+    int index = 1;
+    for(int i = 1; i < nums.size(); i++) {
+        if(nums[i] != nums[i-1]) {
+            nums[index++] = nums[i];
+        }
+    }
+    return index;
+}
+
+// ---------------------------------------------
+// Problem 3: Squares of a Sorted Array (LeetCode 977)
+// ---------------------------------------------
+vector<int> sortedSquares(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> result(n);
+    int left = 0, right = n-1, pos = n-1;
+    while(left <= right) {
+        if(abs(nums[left]) > abs(nums[right])) {
+            result[pos--] = nums[left] * nums[left];
+            left++;
+        } else {
+            result[pos--] = nums[right] * nums[right];
+            right--;
+        }
+    }
+    return result;
+}
+
+// ---------------------------------------------
+// Driver Code for Testing
+// ---------------------------------------------
+int main() {
+    // Problem 1
+    vector<int> nums1 = {1,1,2,2,3};
+    int newLength1 = removeDuplicates(nums1);
+    cout << "After removing duplicates (P1): ";
+    for(int i=0; i<newLength1; i++) cout << nums1[i] << " ";
+    cout << endl;
+
+    // Problem 2
+    vector<int> nums2 = {0,0,1,1,1,2,2,3,3,4};
+    int newLength2 = removeDuplicatesVariation(nums2);
+    cout << "After removing duplicates variation (P2): ";
+    for(int i=0; i<newLength2; i++) cout << nums2[i] << " ";
+    cout << endl;
+
+    // Problem 3
+    vector<int> nums3 = {-4,-1,0,3,10};
+    vector<int> squares = sortedSquares(nums3);
+    cout << "Squares of sorted array (P3): ";
+    for(int x : squares) cout << x << " ";
+    cout << endl;
+
+    return 0;
+}
